@@ -1,0 +1,53 @@
+server:
+  port: 9002
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:7779
+  application:
+    name: myshop-web
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        enabled: true
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      default:
+        register-health-indicator: true
+        sliding-window-size: 10
+  metrics:
+    enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+feign:
+  circuitbreaker:
+    enabled: true
+
+# 修改Ribbon的负载均衡算法
+myshop-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
