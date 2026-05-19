@@ -12,6 +12,12 @@ spring:
     circuitbreaker:
       resilience4j:
         enabled: true
+  rabbitmq:
+    host: 192.168.88.134 # rabbitmq所在虚机地址
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
 
 management:
   metrics:
