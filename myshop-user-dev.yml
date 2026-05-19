@@ -12,6 +12,12 @@
       show-sql: true # 是否打印sql语句
       generate-ddl: true # 是否自动建表
       database: mysql # jpa连接的数据库类型
+      rabbitmq:
+        host: 192.168.88.134 # rabbitmq所在虚机地址
+        port: 5672
+        username: guest
+        password: guest
+        virtual-host: /
   eureka:
     client:
       service-url:
